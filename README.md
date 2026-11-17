@@ -1,6 +1,6 @@
 # 🚗 Luxury Wheels - Sistema de Aluguel de Veículos de Luxo
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-black.svg?logo=github)](https://github.com/mrdebora/LUXURY_WEELS)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black.svg?logo=github)](https://github.com/deboravazx/LUXURY_WEELS)
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Flask](https://img.shields.io/badge/Flask-3.0+-green.svg)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple.svg)
@@ -113,7 +113,7 @@ Sistema web moderno e elegante para gerenciamento de aluguel de veículos de lux
 
 ### 1. Clone o repositório
 ```bash
-git clone https://github.com/mrdebora/LUXURY_WEELS.git
+git clone https://github.com/deboravazx/LUXURY_WEELS.git
 cd LUXURY_WEELS
 ```
 
@@ -246,12 +246,20 @@ luxury_wheels/
 
 ## 🔒 Segurança
 
+**Development-only application:** set a unique, high-entropy `FLASK_SECRET_KEY` environment variable before starting. Debugging is disabled by default; never enable debug on a public server. CSRF protection, role-based authorization for vehicle editing, and input-validation hardening still require implementation and verification.
+
+```bash
+export FLASK_SECRET_KEY="$(python3 -c 'import secrets; print(secrets.token_hex(32))')"
+python app.py
+```
+
+
 - ✅ Senhas hasheadas com PBKDF2-SHA256
-- ✅ Proteção CSRF do Flask
+- ⚠️ Proteção CSRF em formulários: ainda não implementada; necessária antes de uso em produção
 - ✅ Validação de propriedade de recursos (usuário só edita suas reservas)
 - ✅ SQL injection prevenido (SQLAlchemy ORM)
 - ✅ Validações client-side e server-side
-- ✅ Sessões seguras com Flask-Login
+- ✅ Autenticação de sessões com Flask-Login (revisão adicional recomendada)
 
 ## 📊 Banco de Dados
 
@@ -394,12 +402,12 @@ Contribuições são bem-vindas! Por favor:
 ## 📞 Suporte
 
 Para suporte ou dúvidas:
-- 📧 Abra uma [issue no GitHub](https://github.com/mrdebora/LUXURY_WEELS/issues)
+- 📧 Abra uma [issue no GitHub](https://github.com/deboravazx/LUXURY_WEELS/issues)
 - 💬 Entre em contato através do repositório
 
 ## 🎓 Autores
 
-**Desenvolvido por:** [@mrdebora](https://github.com/mrdebora)
+**Desenvolvido por:** [@deboravazx](https://github.com/mrdebora)
 
 Desenvolvido com ❤️ para gerenciamento premium de veículos de luxo.
 
