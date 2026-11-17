@@ -16,7 +16,9 @@ os.makedirs(db_dir, exist_ok=True)
 db_path = os.path.join(db_dir, 'luxury.db')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'luxury-secret'
+app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY')
+if not app.config['SECRET_KEY']:
+    raise RuntimeError('FLASK_SECRET_KEY must be configured before starting the application.')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
@@ -464,5 +466,5 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-    app.run(debug=True)
+    app.run(debug=os.environ.get('FLASK_DEBUG', '0') == '1')
 
